@@ -54,7 +54,7 @@ function SceneComponent(props) {
                     importMap.textContent = JSON.stringify({
                         imports: {
                             "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                            "gsap": "https://unpkg.com/gsap@3.12.5/index.js",
+                            "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
                             "lil-gui": "https://unpkg.com/lil-gui@0.19.1/dist/lil-gui.esm.min.js"
                         }
                     });
@@ -68,7 +68,7 @@ function SceneComponent(props) {
                     type: 'module',
                     cacheDir: folderPath + "/data/cache/scripts"
                 });
-                const gsapModule = await loadScript(dc, 'https://unpkg.com/gsap@3.12.5/index.js', { 
+                const gsapModule = await loadScript(dc, 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm', { 
                     type: 'module',
                     cacheDir: folderPath + "/data/cache/scripts"
                 });
