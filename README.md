@@ -18,7 +18,7 @@
   <hr>
 </div>
 
-<img src="_RESOURCES/DATACORE/_DONE/SceneUI/assets/videos/preview.gif" alt="Scene UI Walkthrough" width="100%">
+<img src="assets/videos/preview.gif" alt="Scene UI Walkthrough" width="100%">
 
 <div align="center">
   <p>
@@ -86,7 +86,7 @@ The package exposes the following compiled files:
 
 | Static Mockup | Interactive 3D Stage |
 | :---: | :---: |
-| ![Preview 1](_RESOURCES/DATACORE/_DONE/SceneUI/assets/image/preview_1.webp) | ![Walkthrough GIF](_RESOURCES/DATACORE/_DONE/SceneUI/assets/videos/preview.gif) |
+| ![Preview 1](assets/image/preview_1.webp) | ![Walkthrough GIF](assets/videos/preview.gif) |
 
 ---
 
