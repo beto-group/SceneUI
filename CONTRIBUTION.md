@@ -1,17 +1,40 @@
-# Contribution Guidelines
+# Contribution Guidelines — Scene UI
 
-We welcome contributions to this Datacore component!
+Welcome! This component is part of the BetoOS Datacore library. Please adhere to the following architectural standards.
 
-## Local Development Workflow
+## Codebase Architecture
 
-1. This component runs locally within the Datacore environment.
-2. Ensure you have the `Datacore` plugin active.
-3. Make changes in `src/components/SceneComponent.jsx` or `src/App.jsx`.
-4. The component uses an HMR polling daemon. Trigger a hot reload by modifying `data/mcp_commands.json` (e.g., set `"action": "reload"` and `"executed": false`).
+The module utilizes a split-file structure to guarantee legibility, testability, and isolated execution scopes:
 
-## Pull Request Process
+```text
+SceneUI/
+├── SCENE UI.md            # Obsidian entry point
+├── METADATA.md            # Component manifest
+├── README.md              # Documentation
+├── CONTRIBUTION.md        # This file
+├── LICENSE.md             # MIT license
+├── data/
+│   └── mcp_commands.json  # External watch/reload trigger
+├── assets/
+│   ├── image/
+│   │   └── preview_1.webp # Static preview image
+│   └── videos/
+│       └── preview.gif    # Interactive walkthrough GIF
+└── src/
+    ├── index.jsx          # Event-driven code watch & reload daemon
+    ├── App.jsx            # Main layout and coordinator
+    ├── components/
+    │   └── SceneComponent.jsx # Core WebGL Three.js parallax stage
+    ├── styles/
+    │   └── styles.jsx     # Scoped Javascript design token sheet
+    └── utils/
+        ├── domUtils.jsx   # Workspace leaf node locators
+        └── LoadScriptUpgrade.js # Vault-caching dynamic script loader
+```
 
-1. Ensure the code is properly formatted and adheres to BetoOS styling (no emojis in buttons or selects, use Obsidian CSS variables, standard function signatures).
-2. Do not commit any personal environment paths or secrets (run "Beto Clean").
-3. Update `README.md` if the component's features or directory structure change.
-4. Submit your PR against the `main` branch.
+## Developer Standards
+
+1. **Strict Zero Emojis**: All UI elements, buttons, headers, and control indicators must use Lucide vector icons (`<dc.Icon>`) or plain text. Emojis are reserved strictly for documentation.
+2. **Path Safety**: Do not hardcode absolute path strings (e.g. `/Volumes/` or `file:///`). Always resolve vault directories dynamically.
+3. **No-Polling Code Watcher**: The index bootstrapper registers an event listener with `app.vault.on("modify")` targeting files under `SceneUI/src/`. This triggers an instant reload of the component's React view when source code modifications are saved, bypassing background CPU polling entirely.
+4. **HMR Command System**: To force a code reload or command watch directory path change remotely via MCP agents, write the reload payload to `data/mcp_commands.json`.

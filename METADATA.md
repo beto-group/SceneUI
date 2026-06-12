@@ -1,33 +1,34 @@
 ---
 author: beto.group
 contributor: []
-version: 1.0.0
-id: scene-ui-347
-name: SCENE UI
-description: An interactive Three.js 3D scene builder rendering layered UI panels in a parallax WebGL stage with GSAP animations and real-time Lil-GUI controls.
+version: 2.0.0
+id: scene-ui-201
+name: SceneUI
+description: An immersive WebGL environment and interactive control deck styled matching Obsidian's theme variables.
 status: stable
-complexity: advanced
+complexity: intermediate
 category:
-  - visualizer
+  - utility
+tags:
   - webgl
-  - 3d
+  - particle
+  - threejs
+  - custom-shader
 compatibility:
   - Obsidian >=1.5.0
 repository:
   - https://github.com/beto-group/SceneUI
 missing: []
 resources:
-  - assets/scene_ui.webp
-  - assets/sceneui.clip.gif
+  - assets/image/preview_1.webp
+  - assets/videos/preview.gif
 type: DatacoreComponent
 target: Datacore
 security:
-  - Vault
-  - NodeFS
-  - Network
+  - Local Access
 storage:
-  - File
-network: Online (Caching)
+  - Obsidian Configuration
+network: Offline
 runtime: React
 entry_point: SCENE UI.md
 logic: src/index.jsx
